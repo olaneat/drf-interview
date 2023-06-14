@@ -4,7 +4,7 @@ this is a simple todo list app developed using DRF for the backend and React in 
 that can be runned locally by pulling the main,
 branch which contains code for the backend and the master branch which contains code for the frontend,
 once these code have been pulled to the local host, the depencies can be installed using `pip install -r requirement.txt` to install the backend depencies, 
-and the locahost server can be started using `python manage.py runserver`, 
+and the locahost server can be started using `python manage.py runserver`,  run `python manage.py makemigration` & `python manage.py migrate` to setup the DB,
 frontend dependencies can be installed  using `npm install` and the server can b started using `npm start`
 
 
