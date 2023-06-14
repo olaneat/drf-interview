@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 
 const TaskList = () =>{
-    const [taskLists, setTasks] =  useState([])    
+    let [taskLists, setTasks] =  useState([])    
     const navigate = useNavigate() 
     useEffect(()=>{
         fetchTask()
@@ -26,11 +26,11 @@ const TaskList = () =>{
 
         
     }
-    function deleteTask(id){
-        Services.deleteTask(id).then((res)=>{
-            let tasks = res.data
+    function deleteTask(task){
+        Services.deleteTask(task.id).then((res)=>{
             console.log(res)
-            //setTasks(tasks)
+            taskLists.filter((item)=>task.id !== item.id)
+            taskLists = taskLists
         })
     }
 
@@ -45,7 +45,7 @@ const TaskList = () =>{
                 {taskLists?.map((task)=> {
                         return<div className="row">
                                 <p className="col-10"><Link to={`/update/${task.id}`} className={`${Style.link}`}>{task.name}</Link></p>
-                                <p className="col-1" onClick={()=>deleteTask(task.id)}><DeleteIcon/></p>
+                                <p className="col-1" onClick={()=>deleteTask(task)}><DeleteIcon/></p>
                                 <p className="col-1" onClick={()=>updateTask(task.id)}><EditIcon/></p>
                             </div>
                     })}

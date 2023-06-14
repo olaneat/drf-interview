@@ -46,7 +46,7 @@ const NewTask = ()=>{
     }
     function updateTask(id){
       
-         Services.updateTask(id, form).then((res)=>{
+         Services.updateTask(id, taskName).then((res)=>{
             console.log(res)
             navigate('/')
         console.log('update')
