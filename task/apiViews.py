@@ -26,11 +26,13 @@ class UpdateTaskAPI(APIView):
         task = TaskModel.objects.get(id=id) # the task model is queried using the particular task id
         if not task: # her the Db is checked it that particular task doesnt exist
             return Response({'msg': 'data doesnt exists'},status=status.HTTP_400_BAD_REQUEST, ) # if the task isn't found an err msg is retured  
+        print(request.data)
         data = { # here the data to be upodated is created
-            'task': request.data.get('name'), # here the the name field is gotten from the request  
+            'name': request.data.get('name'), # here the the name field is gotten from the request  
             #'completed': request.data.get('completed')  # here the the completed field is gotten from the request
         }
         serializer = TaskSerializer(instance = task, data=data, partial = True) # a JSON object is created for the data to be updated
+        
         if serializer.is_valid(): # the JSON object is checked if valid
             serializer.save() # the JSON object saved
             return Response(serializer.data, status=status.HTTP_200_OK) # a success response is returned to the user
