@@ -3,11 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Index from './componenets/index';
+import 'bootstrap/dist/css/bootstrap.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import NewTask from './componenets/create-tasks/task';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+   <Routes>
+    <Route path='' element={ <Index />} />
+    <Route path='/create-task' element={ <NewTask />} />
+    <Route path='/update-task/:id' element={ <NewTask />} />
+
+   </Routes>
+
+    </BrowserRouter>
   </React.StrictMode>
 );
 
